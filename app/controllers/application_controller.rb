@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::API
+  include Rails::Pagination
   include Response
   include Error_response
   before_action :authenticate_request

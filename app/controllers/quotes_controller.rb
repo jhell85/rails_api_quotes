@@ -7,7 +7,8 @@ class QuotesController < ApplicationController
       json_response(@quotes)
     else
       @quotes = Quote.all
-      json_response(@quotes)
+      paginate json: @quotes, per_page: 2
+
     end
   end
   

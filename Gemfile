@@ -19,6 +19,10 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'jwt'
 gem 'simple_command'
 gem 'rack-attack'
+# gem 'grape', '>= 0.10.0'
+# gem 'kaminari'
+gem 'will_paginate'
+gem 'api-pagination'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

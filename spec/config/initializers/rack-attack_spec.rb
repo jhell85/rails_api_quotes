@@ -28,5 +28,30 @@ describe Rack::Attack do
       end
     end
   end
+
+  describe "throttle excessive POST requests to sign in by IP address" do
+    let(:limit) { 5 }
   
+    context "number of requests is lower than the limit" do
+      it "does not change the request status" do
+        limit.times do |i|
+          post "/authenticate", { email: "example1#{i}@gmail.com" }, "REMOTE_ADDR" => "1.2.3.6"
+          expect(last_response.status).to_not eq(429)
+        end
+      end
+    end
+  end
+  
+  describe "throttle excessive POST requests to sign in by email address" do
+    let(:limit) { 5 }
+  
+    context "number of requests is lower than the limit" do
+      it "does not change the request status" do
+        limit.times do |i|
+          post "/authenticate", { email: "example5@gmail.com" }, "REMOTE_ADDR" => "#{i}.2.4.9"
+          expect(last_response.status).to_not eq(429)
+        end
+      end
+    end
+  end
 end
