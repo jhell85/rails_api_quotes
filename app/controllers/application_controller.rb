@@ -2,7 +2,7 @@ class ApplicationController < ActionController::API
   include Rails::Pagination
   include Response
   include Error_response
-  before_action :authenticate_request
+  # before_action :authenticate_request
   attr_reader :current_user
 
   private
